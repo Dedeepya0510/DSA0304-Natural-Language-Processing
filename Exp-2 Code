@@ -1,0 +1,25 @@
+import re
+products = [
+    "Laptop",
+    "Laptop Bag",
+    "Mouse",
+    "Keyboard",
+    "Gaming Laptop",
+    "Smart Phone",
+    "Phone Case",
+    "Bluetooth Speaker"
+]
+keyword = input("Enter search keyword: ")
+exact = [p for p in products if re.fullmatch(keyword, p, re.I)]
+prefix = [p for p in products if re.match(keyword, p, re.I)]
+suffix = [p for p in products if re.search(keyword + r"$", p, re.I)]
+partial = [p for p in products if re.search(keyword, p, re.I)]
+print("\nExact Match:", exact)
+print("Prefix Match:", prefix)
+print("Suffix Match:", suffix)
+print("Partial Match:", partial)
+print("\n------ Report ------")
+print("Exact:", len(exact))
+print("Prefix:", len(prefix))
+print("Suffix:", len(suffix))
+print("Partial:", len(partial))
