@@ -1,0 +1,12 @@
+import re
+
+text = """
+Email: student@gmail.com
+Phone: 9876543210
+"""
+
+email = re.findall(r'\S+@\S+', text)
+phone = re.findall(r'[6-9]\d{9}', text)
+
+print(email)
+print(phone)
