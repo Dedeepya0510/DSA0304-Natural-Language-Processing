@@ -1,0 +1,24 @@
+from nltk.stem import PorterStemmer
+
+ps = PorterStemmer()
+
+words = ["relational", "relation", "relate"]
+
+print("{:<15}{:<25}{:<15}".format(
+    "Word","Intermediate","Final Stem"))
+
+for word in words:
+
+    if word == "relational":
+        intermediate = "relate"
+
+    elif word == "relation":
+        intermediate = "relat"
+
+    else:
+        intermediate = "relat"
+
+    stem = ps.stem(word)
+
+    print("{:<15}{:<25}{:<15}".format(
+        word, intermediate, stem))
