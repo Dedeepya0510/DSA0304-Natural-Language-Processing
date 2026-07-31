@@ -1,0 +1,39 @@
+# DFA Simulator
+
+states = input("Enter states (space separated): ").split()
+alphabet = input("Enter alphabet symbols (space separated): ").split()
+
+transition = {}
+
+print("\nEnter Transition Table")
+for state in states:
+    transition[state] = {}
+    for symbol in alphabet:
+        next_state = input(f"δ({state}, {symbol}) = ")
+        transition[state][symbol] = next_state
+
+initial_state = input("Enter Initial State: ")
+final_states = input("Enter Final States (space separated): ").split()
+
+n = int(input("Enter number of strings to test: "))
+
+for _ in range(n):
+    string = input("\nEnter String: ")
+
+    current = initial_state
+    path = [current]
+    valid = True
+
+    for ch in string:
+        if ch not in alphabet:
+            valid = False
+            break
+        current = transition[current][ch]
+        path.append(current)
+
+    print("Transition Path:", " -> ".join(path))
+
+    if valid and current in final_states:
+        print("Accepted")
+    else:
+        print("Rejected")
