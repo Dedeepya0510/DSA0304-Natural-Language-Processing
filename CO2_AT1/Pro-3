@@ -1,0 +1,24 @@
+words = ["played", "player", "playing"]
+
+print("{:<12}{:<10}{:<10}{:<15}{:<10}".format(
+    "Word","Stem","Affix","Type","Normalized"))
+
+for word in words:
+
+    if word.endswith("ed"):
+        stem = word[:-2]
+        affix = "ed"
+        typ = "Inflectional"
+
+    elif word.endswith("er"):
+        stem = word[:-2]
+        affix = "er"
+        typ = "Derivational"
+
+    elif word.endswith("ing"):
+        stem = word[:-3]
+        affix = "ing"
+        typ = "Inflectional"
+
+    print("{:<12}{:<10}{:<10}{:<15}{:<10}".format(
+        word,stem,affix,typ,"play"))
