@@ -1,0 +1,22 @@
+words = ["unhappy", "happiness", "happily"]
+
+print("{:<12}{:<10}{:<10}{:<10}{:<15}{:<10}".format(
+    "Word","Prefix","Root","Suffix","Type","Normalized"))
+
+for word in words:
+
+    prefix=""
+    suffix=""
+    root="happy"
+
+    if word.startswith("un"):
+        prefix="un"
+
+    if word.endswith("ness"):
+        suffix="ness"
+
+    elif word.endswith("ly"):
+        suffix="ly"
+
+    print("{:<12}{:<10}{:<10}{:<10}{:<15}{:<10}".format(
+        word,prefix,root,suffix,"Derivational",root))
