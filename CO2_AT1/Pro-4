@@ -1,0 +1,24 @@
+words = ["writes", "writing", "written"]
+
+print("{:<12}{:<20}{:<12}{:<12}{:<10}".format(
+    "Word","State Path","Pattern","Root","Normalized"))
+
+for word in words:
+
+    if word=="writes":
+        state="q0->q1->q2"
+        pattern="Regular"
+        root="write"
+
+    elif word=="writing":
+        state="q0->q1->q3"
+        pattern="Regular"
+        root="write"
+
+    elif word=="written":
+        state="q0->q4->q5"
+        pattern="Irregular"
+        root="write"
+
+    print("{:<12}{:<20}{:<12}{:<12}{:<10}".format(
+        word,state,pattern,root,root))
