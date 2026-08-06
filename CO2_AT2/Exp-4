@@ -1,0 +1,36 @@
+# Q4: Morphological Parsing
+
+words = ["activate", "activation", "reactivation"]
+
+print("-" * 120)
+print("{:<15} {:<10} {:<12} {:<10} {:<25} {:<15} {:<20}".format(
+    "Original", "Prefix", "Root", "Suffix",
+    "Derivation", "Normalized", "Word Class"))
+print("-" * 120)
+
+for word in words:
+
+    if word == "activate":
+        prefix = "-"
+        root = "activate"
+        suffix = "-"
+        derivation = "Base Word"
+        wordclass = "Verb"
+
+    elif word == "activation":
+        prefix = "-"
+        root = "activate"
+        suffix = "-ion"
+        derivation = "activate + ion"
+        wordclass = "Noun"
+
+    elif word == "reactivation":
+        prefix = "re"
+        root = "activate"
+        suffix = "-ion"
+        derivation = "re + activate + ion"
+        wordclass = "Noun"
+
+    print("{:<15} {:<10} {:<12} {:<10} {:<25} {:<15} {:<20}".format(
+        word, prefix, root, suffix,
+        derivation, root, wordclass))
