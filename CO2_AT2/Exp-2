@@ -1,0 +1,35 @@
+# Q2: Morphological Parsing
+
+words = ["disagree", "agreement", "agreeable"]
+
+print("-" * 120)
+print("{:<15} {:<10} {:<10} {:<10} {:<15} {:<25} {:<15}".format(
+    "Original", "Prefix", "Root", "Suffix",
+    "Type", "Meaning", "Normalized"))
+print("-" * 120)
+
+for word in words:
+
+    if word == "disagree":
+        prefix = "dis"
+        root = "agree"
+        suffix = "-"
+        mtype = "Derivational"
+        meaning = "Opposite meaning"
+
+    elif word == "agreement":
+        prefix = "-"
+        root = "agree"
+        suffix = "-ment"
+        mtype = "Derivational"
+        meaning = "State of agreeing"
+
+    elif word == "agreeable":
+        prefix = "-"
+        root = "agree"
+        suffix = "-able"
+        mtype = "Derivational"
+        meaning = "Capable of agreeing"
+
+    print("{:<15} {:<10} {:<10} {:<10} {:<15} {:<25} {:<15}".format(
+        word, prefix, root, suffix, mtype, meaning, root))
