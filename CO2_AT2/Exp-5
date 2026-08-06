@@ -1,0 +1,29 @@
+# Q5: Inflectional Morphology
+
+words = ["create", "creates", "creating"]
+
+print("-" * 105)
+print("{:<15} {:<15} {:<15} {:<25} {:<15}".format(
+    "Original", "Root", "Suffix",
+    "Grammatical Category", "Normalized"))
+print("-" * 105)
+
+for word in words:
+
+    if word == "create":
+        root = "create"
+        suffix = "-"
+        category = "Base Form"
+
+    elif word == "creates":
+        root = "create"
+        suffix = "-s"
+        category = "Third Person Singular"
+
+    elif word == "creating":
+        root = "create"
+        suffix = "-ing"
+        category = "Present Participle"
+
+    print("{:<15} {:<15} {:<15} {:<25} {:<15}".format(
+        word, root, suffix, category, root))
