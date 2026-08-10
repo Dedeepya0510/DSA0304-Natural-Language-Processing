@@ -1,0 +1,36 @@
+from collections import Counter
+
+text = """
+the student is studying
+the student is learning
+the student is reading
+the teacher is teaching
+the student is writing
+"""
+
+words = text.lower().split()
+
+unigram = Counter(words)
+bigram = Counter(zip(words, words[1:]))
+trigram = Counter(zip(words, words[1:], words[2:]))
+
+print("Unigram:", unigram)
+print("Bigram:", bigram)
+print("Trigram:", trigram)
+
+def predict_next(sentence):
+    last = sentence.lower().split()[-1]
+    predictions = []
+
+    for (w1, w2), count in bigram.items():
+        if w1 == last:
+            prob = count / unigram[w1]
+            predictions.append((w2, prob))
+
+    predictions.sort(key=lambda x: x[1], reverse=True)
+
+    print("\nTop Next Words:")
+    for word, prob in predictions[:5]:
+        print(word, round(prob, 3))
+
+predict_next("the student is")
