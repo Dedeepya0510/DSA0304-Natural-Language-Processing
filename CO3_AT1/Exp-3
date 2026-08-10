@@ -1,0 +1,28 @@
+import math
+from collections import Counter
+
+training = """
+the student is studying
+the student is learning
+the teacher is teaching
+"""
+
+test = """
+the student is learning
+"""
+
+train_words = training.lower().split()
+test_words = test.lower().split()
+
+counts = Counter(train_words)
+total = len(train_words)
+
+entropy = 0
+
+for word in test_words:
+    probability = counts[word] / total
+
+    if probability > 0:
+        entropy -= probability * math.log2(probability)
+
+print("Entropy:", round(entropy, 3))
