@@ -1,0 +1,15 @@
+sentence = "The student reads a book"
+
+words = sentence.lower().split()
+
+tags = {
+    "the": "DT",
+    "a": "DT",
+    "student": "NN",
+    "book": "NN",
+    "reads": "VBZ"
+}
+
+for word in words:
+    tag = tags.get(word.lower(), "NN")
+    print(word, "->", tag)
