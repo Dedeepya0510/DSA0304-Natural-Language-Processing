@@ -1,0 +1,42 @@
+from collections import Counter
+
+text = """
+the student is studying
+the student is learning
+the student reads books
+the teacher is teaching
+"""
+
+words = text.lower().split()
+
+unigram = Counter(words)
+bigram = Counter(zip(words, words[1:]))
+trigram = Counter(zip(words, words[1:], words[2:]))
+
+def predict(w1, w2):
+    # Trigram
+    candidates = []
+
+    for (a, b, c), count in trigram.items():
+        if a == w1 and b == w2:
+            prob = count / bigram[(a, b)]
+            candidates.append((c, prob))
+
+    if candidates:
+        return "Trigram", max(candidates, key=lambda x: x[1])
+
+    # Backoff to Bigram
+    candidates = []
+
+    for (a, b), count in bigram.items():
+        if a == w2:
+            prob = count / unigram[a]
+            candidates.append((b, prob))
+
+    if candidates:
+        return "Bigram", max(candidates, key=lambda x: x[1])
+
+    # Backoff to Unigram
+    return "Unigram", unigram.most_common(1)[0]
+
+print(predict("the", "student"))
